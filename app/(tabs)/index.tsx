@@ -28,16 +28,11 @@ import { createAuth } from "thirdweb/auth";
 const wallets = [
   inAppWallet({
     auth: {
-      options: [
-        "google",
-        "facebook",
-        "discord",
-        "telegram",
-        "email",
-        "phone",
-        "passkey",
-      ],
-      passkeyDomain: "thirdweb.com",
+      options: ["email", "phone", "passkey"],
+      //FIXME: Use ngrok to expose the server to the internet
+      //https://developer.android.com/identity/sign-in/credential-manager#add-support-dal
+      //https://developer.apple.com/documentation/xcode/supporting-associated-domains
+      passkeyDomain: "e5b0-139-216-80-88.ngrok-free.app",
     },
     smartAccount: {
       chain: baseSepolia,
@@ -127,7 +122,7 @@ export default function HomeScreen() {
           createWallet("io.zerion.wallet"),
           createWallet("xyz.argent"),
           createWallet("com.okex.wallet"),
-          createWallet("com.zengo")
+          createWallet("com.zengo"),
         ]}
         connectButton={{
           label: "Sign in to ✨ MyApp",
